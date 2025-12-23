@@ -33,7 +33,7 @@ const OfferDetails = () => {
       <div className="max-w-2xl mx-auto">
 
         {/* Header */}
-        <div className="flex items-center mb-6">
+        <div className="flex items-center mb-0 lg:mb-6">
           <ArrowLeft
             className="cursor-pointer"
             onClick={() => navigate(-1)}
