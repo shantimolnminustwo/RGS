@@ -45,7 +45,7 @@ const OfferDetails = () => {
           <h1 className={`text-[28px] font-bold ${colors.discount}`}>
             {discount} OFF
           </h1>
-          <img src={logo} alt={brand} className="h-24 object-contain" />
+          <img src={logo} alt={brand} className="h-16 object-cover" />
         </div>
 
         {/* Description */}
