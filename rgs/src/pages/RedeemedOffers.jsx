@@ -4,6 +4,7 @@ import { HiMiniBookmark } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar.jsx";
+import { ArrowLeft } from "lucide-react";
 
 const colorMap = {
     red: {
@@ -66,20 +67,8 @@ const OfferCard = ({
                         className=" mr-5 lg:mr-7 object-contain"
                     />
 
-                    {/* 🔁 Toggle bookmark */}
-                    <span onClick={handleBookmarkClick}>
-                        {bookmarked ? (
-                            <HiMiniBookmark
-                                size={20}
-                                className="absolute top-0 right-0 text-red-500 cursor-pointer"
-                            />
-                        ) : (
-                            <CiBookmark
-                                size={22}
-                                className="absolute top-0 right-0 text-red-500 cursor-pointer"
-                            />
-                        )}
-                    </span>
+                   
+                   
                 </div>
             </div>
 
@@ -94,20 +83,19 @@ const OfferCard = ({
 };
 
 
-const Offers = () => {
+const RedeemedOffers = () => {
     const [open, setOpen] = useState(false);
     return (
         <div className="w-full min-h-screen bg-[#FFEDED] font-poppins p-4">
             <div className="max-w-3xl mx-auto">
                 {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                    <h1 className="text-3xl font-bold">OFFERS</h1>
-                    <div className=" flex items-center gap-3 ">
-                        <img src="/refresh.svg" alt="refresh icon" className="w-6 h-6" />
-                        <Menu className="cursor-pointer"
-          onClick={() => setOpen(true)} size={24} />
-                    </div>
-                    <Sidebar isOpen={open} onClose={() => setOpen(false)} />
+                <div className="flex items-center mb-6 gap-8">
+                     <ArrowLeft
+            className="text-black cursor-pointer"
+            onClick={() => window.history.back()}
+          />
+                    <h1 className="text-2xl sm:text-3xl font-bold">REDEEMED OFFERS</h1>
+                   
                 </div>
 
                 {/* Top Offers */}
@@ -130,12 +118,9 @@ const Offers = () => {
                     />
                 </div>
 
-                {/* Near You */}
-                <h2 className="mt-8 mb-3 text-lg font-bold text-[#555353]">
-                    Near you
-                </h2>
+                
 
-                <div className="space-y-4">
+                <div className="space-y-4 mt-4">
                     <OfferCard
                         id="sign-1"
                         discount="50%"
@@ -156,12 +141,18 @@ const Offers = () => {
                 </div>
 
                 {/* Other Offers */}
-                <h2 className="mt-8 mb-3 text-lg font-bold text-[#555353]">
-                    Other Offers
-                </h2>
-                <div className="space-y-4">
+                
+                <div className="space-y-4 mt-4">
                     <OfferCard
                         id="puma-1"
+                        discount="50%"
+                        brand="Puma"
+                        code="PUM123"
+                        logo="/puma.png"
+                        variant="black"
+                    />
+                    <OfferCard
+                        id="puma-2"
                         discount="50%"
                         brand="Puma"
                         code="PUM123"
@@ -175,4 +166,4 @@ const Offers = () => {
     );
 };
 
-export default Offers;
+export default RedeemedOffers;
