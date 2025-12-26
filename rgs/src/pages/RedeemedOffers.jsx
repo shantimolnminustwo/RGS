@@ -73,7 +73,7 @@ const OfferCard = ({
             </div>
 
             <div className="flex items-center justify-between w-full">
-                <p className="text-base text-[#888888]">Grab your offer now</p>
+                <p className="text-base text-[#888888]">Grab your earning now</p>
                 <p className={`text-sm font-bold mr-0 lg:mr-7 ${colors.code}`}>
                     CODE: <span className="font-bold">{code}</span>
                 </p>
@@ -94,7 +94,7 @@ const RedeemedOffers = () => {
             className="text-black cursor-pointer"
             onClick={() => window.history.back()}
           />
-                    <h1 className="text-2xl sm:text-3xl font-bold">REDEEMED OFFERS</h1>
+                    <h1 className="text-2xl sm:text-3xl font-bold">REDEEMED EARNINGS</h1>
                    
                 </div>
 

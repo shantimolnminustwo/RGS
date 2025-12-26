@@ -84,7 +84,7 @@ const OfferCard = ({
             </div>
 
             <div className="flex items-center justify-between w-full">
-                <p className="text-base text-[#888888]">Grab your offer now</p>
+                <p className="text-base text-[#888888]">Grab your earning now</p>
                 <p className={`text-sm font-bold mr-0 lg:mr-7 ${colors.code}`}>
                     CODE: <span className="font-bold">{code}</span>
                 </p>
@@ -101,7 +101,7 @@ const Offers = () => {
             <div className="max-w-3xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
-                    <h1 className="text-3xl font-bold">OFFERS</h1>
+                    <h1 className="text-3xl font-bold">EARNINGS</h1>
                     <div className=" flex items-center gap-3 ">
                         <img src="/refresh.svg" alt="refresh icon" className="w-6 h-6" />
                         <Menu className="cursor-pointer"
@@ -157,7 +157,7 @@ const Offers = () => {
 
                 {/* Other Offers */}
                 <h2 className="mt-8 mb-3 text-lg font-bold text-[#555353]">
-                    Other Offers
+                    Other earnings
                 </h2>
                 <div className="space-y-4">
                     <OfferCard
