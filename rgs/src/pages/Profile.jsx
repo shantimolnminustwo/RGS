@@ -51,7 +51,7 @@ const Profile = () => {
   <div
     key={index}
     onClick={item.action}
-    className="flex justify-between items-center px-5 py-4 text-[#444242] cursor-pointer hover:bg-[#FFF1F1]"
+    className="flex justify-between items-center px-5 py-4 text-[#444242] cursor-pointer hover:bg-gray-100 transition"
   >
     {item.label}
     <span className="text-[#9C9999]">
