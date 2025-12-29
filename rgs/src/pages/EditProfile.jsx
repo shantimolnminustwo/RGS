@@ -42,15 +42,24 @@ const EditProfile = () => {
     <div className="min-h-screen bg-[#FFEDED]">
       
       {/* Header */}
-      <div className="relative flex items-center gap-4 h-[20vh] bg-[#F24E4E] px-5 pt-6 bg-[url(/profile_bg.svg)] bg-no-repeat bg-cover">
-        <ArrowLeft
-          className="text-white cursor-pointer"
-          onClick={() => navigate(-1)}
-        />
-        <h2 className="text-white text-2xl font-bold">
-          Edit Profile
-        </h2>
-      </div>
+      <div className="relative flex items-center gap-4 h-[20vh] bg-[#F24E4E] px-5 pt-6 overflow-hidden">
+
+  {/* Circle 1 – Biggest */}
+  <div className="absolute -top-28 -right-50 sm:-right-45 w-72 h-61 sm:h-65 rounded-full bg-[#C53838] z-30" />
+  <div className="absolute -top-28 -right-40 sm:-right-27 w-72 h-60 sm:h-64 rounded-full bg-[#CC4545] z-20" />
+  <div className="absolute -top-28 -right-30 sm:-right-12 w-72 h-60 sm:h-64 rounded-full bg-[#E98989] z-10" />
+
+ 
+
+  <ArrowLeft
+    className="text-white cursor-pointer z-10"
+    onClick={() => navigate(-1)}
+  />
+
+  <h2 className="text-white text-2xl font-bold z-10">
+    Edit Profile
+  </h2>
+</div>
 
       {/* Avatar */}
       <div className="flex flex-col items-center mt-8">
