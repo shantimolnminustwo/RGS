@@ -1,4 +1,4 @@
- import { HashRouter, Routes, Route } from "react-router-dom";
+ import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Offers from "./pages/Offers";
 import OfferDetails from "./pages/OfferDetails";
@@ -8,7 +8,8 @@ import RedeemedOffers from "./pages/RedeemedOffers";
 
 function App() {
   return (
-    <HashRouter>
+     <HashRouter>
+    {/* <BrowserRouter> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/offers" element={<Offers />} />
@@ -17,7 +18,8 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/redeemed-offers" element={<RedeemedOffers />} />
       </Routes>
-    </HashRouter>
+   </HashRouter>
+    // </BrowserRouter>
   );
 }
 
