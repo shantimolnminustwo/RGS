@@ -19,7 +19,7 @@ const EditProfile = () => {
     }
   };
 
-  // ✉️ Email validation sss vvv
+  // ✉️ Email validation sss vvv 11
   const validateEmail = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
