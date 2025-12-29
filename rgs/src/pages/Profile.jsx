@@ -20,7 +20,7 @@ const Profile = () => {
         </h2>
 
         {/* Decorative circles (optional) */}
-        {/* <div className="absolute right-0 top-0 w-60 h-40  bg-[url(/rounds.svg)] bg-cover" /> */}
+        {/* <div className="absolute right-0 top-0 w-60 h-40  bg-[url(/rounds.svg)] bg-cover" />sssss */}
       </div>
 
       {/* Profile Card */}
