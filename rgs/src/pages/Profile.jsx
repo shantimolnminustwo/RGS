@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+ import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
@@ -24,7 +24,7 @@ const Profile = () => {
   />
 
   <h2 className="text-white text-2xl font-bold z-10">
-    Edit Profile
+     Profile
   </h2>
 </div>
 
