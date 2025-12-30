@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -7,8 +8,9 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -17,8 +19,32 @@ const Login = () => {
     }
 
     setError("");
-    navigate("/offers");
+    setLoading(true);
+
+    try {
+      // Call your backend login API
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
+        username,
+        password,
+      });
+
+      // Save JWT token in localStorage
+      localStorage.setItem("token", res.data.token);
+
+      // // Optional: save user info if needed
+      // localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // Navigate to offers page
+      navigate("/offers");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Login failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
@@ -39,7 +65,7 @@ const Login = () => {
               Username
             </label>
             <input
-              type="text"
+               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your username"
@@ -80,9 +106,10 @@ const Login = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-[#EA454C] text-white py-2.5 rounded-xl font-semibold hover:bg-red-600 transition"
           >
-            Sign in
+              {loading ? "Signing in..." : "Sign in"}
           </button>
         </form>
       </div>
