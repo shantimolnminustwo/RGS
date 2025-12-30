@@ -10,6 +10,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,7 +25,7 @@ const Login = () => {
 
     try {
       // Call your backend login API
-      const res = await axios.post("https://rgs-backend.onrender.com/login", {
+      const res = await axios.post(`${API_URL}/login`, {
         username,
         password,
       });

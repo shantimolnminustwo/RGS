@@ -50,7 +50,7 @@ const EditProfile = () => {
         <div className="absolute -top-28 -right-30 sm:-right-12 w-72  h-64 rounded-full bg-[#E98989] z-10" />
 
 
-<div className="flex items-center justify-start mt-10 gap-4">
+<div className="flex items-center justify-start px-5 pt-6 gap-4">
         <ArrowLeft
           className="text-white cursor-pointer z-10"
           onClick={() => navigate(-1)}
