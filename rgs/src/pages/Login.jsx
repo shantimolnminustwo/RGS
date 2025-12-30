@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       // Call your backend login API
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
+      const res = await axios.post("https://rgs-backend.onrender.com/login", {
         username,
         password,
       });
