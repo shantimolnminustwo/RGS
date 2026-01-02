@@ -25,16 +25,17 @@ const Login = () => {
 
     try {
       // Call your backend login API s
-      const res = await axios.post(`${API_URL}/login`, {
+      const res = await axios.post(`${API_URL}/api/auth/login`, {
         username,
         password,
       });
 
       // Save JWT token in localStorage
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
 
       // // Optional: save user info if needed
-      // localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
       // Navigate to offers page
       navigate("/offers");

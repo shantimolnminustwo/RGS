@@ -1,9 +1,16 @@
- import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const handleLogout = () => {
+  localStorage.removeItem("accessToken"); // or token
+  navigate("/"); // redirect to login page
+};
+
 
   return (
     <div className="min-h-screen bg-[#FFEDED]">
@@ -63,7 +70,7 @@ const Profile = () => {
   { label: "Edit Profile", action: () => navigate("/edit-profile") },
   { label: "Settings", action: () => {} },
   { label: "About Us", action: () => {} },
-  { label: "Log Out", action: () => {} },
+{ label: "Log Out", action: () => setShowLogoutModal(true) },
 ].map((item, index) => (
   <div
     key={index}
@@ -80,6 +87,53 @@ const Profile = () => {
       </div>
       </div>
       <p className="text-base font-medium text-center text-[#888888] pt-14">1000 V points Contact to redeem</p>
+
+
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+
+    {/* Modal Box */}
+    <div className="bg-white w-[90%] max-w-sm rounded-2xl p-10 relative shadow-lg">
+
+      {/* Close Button */}
+      <button
+        onClick={() => setShowLogoutModal(false)}
+        className="absolute top-3 right-5 text-gray-400 hover:text-gray-600"
+      >
+        ✕
+      </button>
+
+      <h3 className="text-xl font-semibold text-center mb-4">
+        Logout Confirmation
+      </h3>
+
+      <p className="text-sm text-gray-600 text-center mb-6">
+        Are you sure you want to log out?
+      </p>
+
+      <div className="w-full flex items-center justify-center gap-4">
+
+        {/* Cancel */}
+        <button
+          onClick={() => setShowLogoutModal(false)}
+          className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition"
+        >
+          Cancel
+        </button>
+      {/* Yes / Logout */}
+        <button
+          onClick={handleLogout}
+          className="px-4 py-2 rounded-lg bg-[#F24E4E] text-white hover:bg-red-600 transition"
+        >
+          Yes, Logout
+        </button>
+       
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

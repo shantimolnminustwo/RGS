@@ -22,10 +22,11 @@ const colorMap = {
 const OfferDetails = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
+  console.log("OfferDetails state:", state);
 
   if (!state) return null;
 
-  const { discount, brand, logo, variant = "red" } = state;
+  const { discount, brand, logo, note,lat,lng, variant = "red" } = state;
   const colors = colorMap[variant];
 
   return (
@@ -43,29 +44,33 @@ const OfferDetails = () => {
         {/* Discount + Logo */}
         <div className="flex items-center justify-between mb-3">
           <h1 className={`text-[28px] font-bold ${colors.discount}`}>
-            {discount} OFF
+            {discount}% OFF
           </h1>
           <img src={logo} alt={brand} className="h-16 object-cover" />
         </div>
 
         {/* Description */}
         <p className="text-sm text-[#777777] leading-relaxed mb-6">
-          Enjoy your favorite dishes at irresistible discounts! From spicy
-          delights to sweet indulgences, treat yourself without breaking the
-          bank. Hurry!
+          {note}
         </p>
 
         {/* Map */}
-        <div
-          className={`rounded-2xl overflow-hidden mb-8 border ${colors.border}
-          shadow-[0_6px_20px_rgba(240,230,140,0.3)]`}
-        >
-          <img
-            src="/map.svg"
-            alt="map"
-            className="w-full h-[300px] object-cover"
-          />
-        </div>
+       {lat && lng && (
+  <div
+    className={`rounded-2xl overflow-hidden mb-8 border ${colors.border}
+    shadow-[0_6px_20px_rgba(240,230,140,0.3)]`}
+  >
+    <iframe
+      title="map"
+      width="100%"
+      height="300"
+      loading="lazy"
+      allowFullScreen
+      className="border-0"
+      src={`https://www.google.com/maps?q=${lat},${lng}&z=15&output=embed`}
+    />
+  </div>
+)}
 
         {/* Redeem Button */}
         <button
