@@ -3,6 +3,7 @@ import api from "../utils/api";
 
 const CreateOfferModal = ({ onClose, onCreate }) => {
   const [logoPreview, setLogoPreview] = useState(null);
+   const [logoFile, setLogoFile] = useState(null); 
 
   const handleCreateOffer = async (e) => {
     e.preventDefault();
@@ -21,18 +22,18 @@ const CreateOfferModal = ({ onClose, onCreate }) => {
     // convert type -> nearYou boolean
     const isNearYou = e.target.type.value === "nearYou";
     formData.append("nearYou", isNearYou);
+ 
+if (logoFile) {
+  formData.append("logo", logoFile);
+}
 
-    if (e.target.logo.files[0]) {
-      formData.append("logo", e.target.logo.files[0]);
-    }
 
     const token = localStorage.getItem("accessToken");
 
     try {
       const res = await api.post("/api/offers", formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
+           Authorization: `Bearer ${token}`,
         },
       });
 
@@ -47,6 +48,7 @@ const CreateOfferModal = ({ onClose, onCreate }) => {
 
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
+    setLogoFile(file);
     setLogoPreview(file ? URL.createObjectURL(file) : null);
   };
 
@@ -119,11 +121,11 @@ const CreateOfferModal = ({ onClose, onCreate }) => {
 
         <input
           type="file"
-          name="logo"
           accept="image/*"
           onChange={handleLogoChange}
           className="w-full border p-2 rounded-lg mb-2"
         />
+        
 
         {logoPreview && (
           <img

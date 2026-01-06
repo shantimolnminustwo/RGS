@@ -103,17 +103,18 @@ const CreateOffers = () => {
             </div>
 
             <div className="text-right">
-              <img
+          <img
   src={
     offer.logo
-      ? offer.logo.startsWith("/uploads")
-        ? `${import.meta.env.VITE_API_URL}${offer.logo}` // ✅ Use env variable
-        : offer.logo
+      ? offer.logo.startsWith("http")
+        ? offer.logo
+        : `https://rgs-backend.onrender.com${offer.logo}`
       : "/default-logo.png"
   }
   alt={offer.brandName}
   className="h-10 object-contain mb-1"
 />
+
 
               <p className="text-sm font-semibold mt-1">
                 CODE: {offer.code}

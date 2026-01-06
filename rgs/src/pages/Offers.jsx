@@ -25,9 +25,6 @@ const colorMap = {
     },
 };
 
-const BASE_URL = import.meta.env.VITE_API_URL;
-
-
 const OfferCard = ({
     discount,
     brand,
@@ -78,11 +75,18 @@ const OfferCard = ({
                 </h3>
 
                 <div className="flex items-center relative">
-                   <img
-  src={logo?.startsWith("/uploads") ? `${BASE_URL}${logo}` : logo}
+                    <img
+  src={
+    logo
+      ? logo.startsWith("http") // if it's already Cloudinary URL
+        ? logo
+        : `https://rgs-backend.onrender.com${logo}` // prepend backend URL
+      : "/default-logo.png" // fallback
+  }
   alt={brand}
-  className="mr-5 lg:mr-7 object-contain h-10"
+  className="mr-5 lg:mr-7 object-contain h-12"
 />
+
 
                     {/* 🔁 Toggle bookmark */}
                    <span onClick={handleBookmarkClick}>

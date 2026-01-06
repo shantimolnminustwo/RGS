@@ -44,15 +44,15 @@ const OfferDetails = () => {
           />
         </div>
 
-        {/* Discount + Logo v*/}
+        {/* Discount + Logo */}
         <div className="flex items-center justify-between mb-3">
           <h1 className={`text-[28px] font-bold ${colors.discount}`}>
             {discount}% OFF
           </h1>
-         <img
-  src={logo?.startsWith("/uploads") ? `${BASE_URL}${logo}` : logo}
+          <img
+  src={logo ? (logo.startsWith("http") ? logo : `${BASE_URL}${logo}`) : "/default-logo.png"}
   alt={brand}
-  className="h-16 object-contain"
+  className="h-16 object-cover"
 />
 
         </div>
