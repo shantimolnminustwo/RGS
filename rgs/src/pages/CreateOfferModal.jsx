@@ -22,11 +22,9 @@ const CreateOfferModal = ({ onClose, onCreate }) => {
     const isNearYou = e.target.type.value === "nearYou";
     formData.append("nearYou", isNearYou);
 
-    // ✅ Fix here
-  const file = e.target.logo.files[0];
-  if (file) {
-    formData.append("logo", file);
-  }
+    if (e.target.logo.files[0]) {
+      formData.append("logo", e.target.logo.files[0]);
+    }
 
     const token = localStorage.getItem("accessToken");
 

@@ -104,16 +104,17 @@ const CreateOffers = () => {
 
             <div className="text-right">
               <img
-                src={
-                  offer.logo
-                    ? offer.logo.startsWith("/uploads")
-                      ? `http://localhost:5000${offer.logo}`
-                      : offer.logo
-                    : "/default-logo.png"
-                }
-                alt={offer.brandName}
-                className="h-10 object-contain mb-1"
-              />
+  src={
+    offer.logo
+      ? offer.logo.startsWith("/uploads")
+        ? `${import.meta.env.VITE_API_URL}${offer.logo}` // ✅ Use env variable
+        : offer.logo
+      : "/default-logo.png"
+  }
+  alt={offer.brandName}
+  className="h-10 object-contain mb-1"
+/>
+
               <p className="text-sm font-semibold mt-1">
                 CODE: {offer.code}
               </p>
