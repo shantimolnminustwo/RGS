@@ -1,4 +1,4 @@
-  import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { PiCamera } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
