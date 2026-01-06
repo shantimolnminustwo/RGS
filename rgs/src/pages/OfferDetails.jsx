@@ -44,7 +44,7 @@ const OfferDetails = () => {
           />
         </div>
 
-        {/* Discount + Logo s*/}
+        {/* Discount + Logo v*/}
         <div className="flex items-center justify-between mb-3">
           <h1 className={`text-[28px] font-bold ${colors.discount}`}>
             {discount}% OFF
