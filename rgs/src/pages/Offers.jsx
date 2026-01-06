@@ -25,6 +25,9 @@ const colorMap = {
     },
 };
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+
 const OfferCard = ({
     discount,
     brand,
@@ -75,11 +78,11 @@ const OfferCard = ({
                 </h3>
 
                 <div className="flex items-center relative">
-                    <img
-                        src={logo}
-                        alt={brand}
-                        className=" mr-5 lg:mr-7 object-contain"
-                    />
+                   <img
+  src={logo?.startsWith("/uploads") ? `${BASE_URL}${logo}` : logo}
+  alt={brand}
+  className="mr-5 lg:mr-7 object-contain h-10"
+/>
 
                     {/* 🔁 Toggle bookmark */}
                    <span onClick={handleBookmarkClick}>

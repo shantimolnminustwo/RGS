@@ -5,6 +5,7 @@ import OfferDetails from "./pages/OfferDetails";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import RedeemedOffers from "./pages/RedeemedOffers";
+import CreateOffers from "./pages/CreateOffers";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/redeemed-offers" element={<RedeemedOffers />} />
+        <Route path="/create-offers" element={<CreateOffers />} />
       </Routes>
    </HashRouter>
     

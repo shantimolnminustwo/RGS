@@ -12,41 +12,45 @@ const Login = () => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!username || !password) {
-      setError("Username and Password are required");
-      return;
-    }
+  if (!username || !password) {
+    setError("Username and Password are required");
+    return;
+  }
 
-    setError("");
-    setLoading(true);
+  setError("");
+  setLoading(true);
 
-    try {
-      // Call your backend login API s
-      const res = await axios.post(`${API_URL}/api/auth/login`, {
-        username,
-        password,
-      });
+  try {
+    // Call your backend login API
+    const res = await axios.post(`${API_URL}/api/auth/login`, {
+      username,
+      password,
+    });
 
-      // Save JWT token in localStorage
-      localStorage.setItem("accessToken", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
+    const { accessToken, refreshToken, user } = res.data;
 
-      // // Optional: save user info if needed
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+    // Save JWT token in localStorage
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
+    localStorage.setItem("user", JSON.stringify(user));
 
-      // Navigate to offers page
+    // 🔹 Role-based navigation
+    if (user.role === "admin") {
+      navigate("/create-offers");
+    } else {
       navigate("/offers");
-    } catch (err) {
-      setError(
-        err.response?.data?.message || "Login failed. Please try again."
-      );
-    } finally {
-      setLoading(false);
     }
-  };
+  } catch (err) {
+    setError(
+      err.response?.data?.message || "Login failed. Please try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   return (

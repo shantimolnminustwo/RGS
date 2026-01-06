@@ -19,6 +19,9 @@ const colorMap = {
   },
 };
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+
 const OfferDetails = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -46,7 +49,12 @@ const OfferDetails = () => {
           <h1 className={`text-[28px] font-bold ${colors.discount}`}>
             {discount}% OFF
           </h1>
-          <img src={logo} alt={brand} className="h-16 object-cover" />
+         <img
+  src={logo?.startsWith("/uploads") ? `${BASE_URL}${logo}` : logo}
+  alt={brand}
+  className="h-16 object-contain"
+/>
+
         </div>
 
         {/* Description */}
