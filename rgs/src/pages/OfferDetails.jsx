@@ -1,5 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import AddressMap from "../components/AddressMap";
 
 const colorMap = {
   red: {
@@ -29,7 +30,7 @@ const OfferDetails = () => {
 
   if (!state) return null;
 
-  const { discount, brand, logo, note,lat,lng, variant = "red" } = state;
+  const { discount, brand, logo, note,address, variant = "red" } = state;
   const colors = colorMap[variant];
 
   return (
@@ -63,26 +64,14 @@ const OfferDetails = () => {
         </p>
 
         {/* Map */}
-       {lat && lng && (
-  <div
-    className={`rounded-2xl overflow-hidden mb-8 border ${colors.border}
-    shadow-[0_6px_20px_rgba(240,230,140,0.3)]`}
-  >
-    <iframe
-      title="map"
-      width="100%"
-      height="300"
-      loading="lazy"
-      allowFullScreen
-      className="border-0"
-      src={`https://www.google.com/maps?q=${lat},${lng}&z=15&output=embed`}
-    />
-  </div>
-)}
+           {/* 🗺️ Map */}
+     <AddressMap address={address} />
+
+      
 
         {/* Redeem Button */}
         <button
-          className={`w-full text-white py-3 rounded-xl font-semibold
+          className={`w-full text-white py-3 rounded-xl font-semibold mt-5
           ${colors.button} transition`}
         >
           Redeem

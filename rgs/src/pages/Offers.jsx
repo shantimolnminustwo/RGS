@@ -32,8 +32,7 @@ const OfferCard = ({
     logo,
     id,
     note,
-    lat,
-    lng,
+    address,
     variant = "red",
     isFilled = false,
     onToggleBookmark,
@@ -47,7 +46,7 @@ const OfferCard = ({
 
     const handleCardClick = () => {
         navigate(`/offers/${id}`, {
-            state: { discount, brand, code, logo, note,lat,lng, variant },
+            state: { discount, brand, code, logo, note,address, variant },
         });
     };
 
@@ -205,8 +204,7 @@ const otherOffers = offers.filter(
         code={offer.code}
         logo={offer.logo}
         note={offer.note}
-        lat={offer.lat} 
-        lng={offer.lng}
+       address={offer.address} 
         variant="red"
         isFilled={true}
         onToggleBookmark={handleToggleBookmark}
@@ -229,8 +227,7 @@ const otherOffers = offers.filter(
         brand={offer.brandName}
         code={offer.code}
         note={offer.note} 
-        lat={offer.lat}
-        lng={offer.lng}
+       address={offer.address} 
         logo={offer.logo}
         variant="blue"       // 🔵 BLUE COLOR
         isFilled={offer.isBookmarked}
@@ -254,8 +251,7 @@ const otherOffers = offers.filter(
         brand={offer.brandName}
         code={offer.code}
         note={offer.note} 
-        lat={offer.lat}
-        lng={offer.lng}
+      address={offer.address} 
         logo={offer.logo}
         variant="black"
         isFilled={false}

@@ -112,7 +112,7 @@ const CreateOffers = () => {
               <img
                 src={
                   offer.logo
-                    ? offer.logo.startsWith("http")
+                    ? offer.logo.startsWith("https")
                       ? offer.logo
                       : `${BASE_URL}${offer.logo}`
                     : "/default-logo.png"
